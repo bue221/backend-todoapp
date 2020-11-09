@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
+import cors from "cors";
 
 //routes imports
 import Task from "./routes/task";
@@ -15,6 +16,7 @@ app.set("port", process.env.PORT || 4000); //configurar el puerto
 //middlewares
 app.use(morgan("dev")); //recibir mensajes acerca de la peticiones
 app.use(express.json()); //utilizar objetos json
+app.use(cors()); // hacer peticiones xml y no ser bloqueado por el navegador
 
 // routes
 app.use("/api/task", Task);
